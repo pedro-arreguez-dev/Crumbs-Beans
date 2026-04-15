@@ -1,0 +1,73 @@
+@use "bootstrap/scss/bootstrap";
+
+/* --- FONTS --- */
+@font-face {
+  font-family: 'Lato';
+  src: url('assets/fonts/Lato-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('assets/fonts/Lato-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('assets/fonts/Lato-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Leckerli One';
+  src: url('assets/fonts/LeckerliOne-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('assets/fonts/PlayfairDisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+:root {
+    --color-primary: #4a3728;
+    --color-secondary: #2d5016;
+    --color-tertiary: #c1f1a1;
+    --color-cream: #faf8f5;
+    --color-light-brown: #fff8f5;
+}
+
+body {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif;
+  overflow-x: clip;
+}
+
+h1 {
+    color: var(--color-primary);
+}
+
+h2 {
+    color: var(--color-primary);
+    font-size: 4rem;
+}
+
+.span-highlight {
+    background-color: var(--color-tertiary);
+    color: var(--color-secondary);
+    border-radius: 20px;
+    padding: 10px 10px;
+    display: inline-block;
+}

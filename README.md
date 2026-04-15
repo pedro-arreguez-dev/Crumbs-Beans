@@ -1,59 +1,43 @@
-# CoffeeApp
+# ☕ Crumbs & Beans - Premium Coffee Shop Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+> A beautifully crafted, full-stack E-Commerce web application built to deliver a seamless and visually stunning coffee ordering experience.
 
-## Development server
+## 🚀 Project Overview
 
-To start a local development server, run:
+**Crumbs & Beans** is a modern Single Page Application (SPA) showcasing best-in-class frontend architecture and serverless backend integration. Engineered with the latest **Angular 19** features such as Standalone Components, built-in Control Flow, and reactive Signals, the application acts as a fast, robust, and highly scalable e-commerce platform.
 
-```bash
-ng serve
-```
+This project was built to demonstrate proficiency in connecting a complex functional UI with a robust real-time database, managing complex asynchronous application state, and delivering a pixel-perfect, premium user experience.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## ✨ Core Features
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+*   **Premium Glassmorphic UI:** A deeply customized, mobile-responsive interface utilizing CSS Custom Properties and advanced SCSS nesting. Featuring custom dropdowns, floating labels, and dynamic sticky layouts.
+*   **Reactive State Management:** Global shopping cart and user session state actively managed with **Angular Signals** for jitter-free, instantaneous UI updates across completely disconnected components.
+*   **Secure Authentication:** End-to-end user registration and login workflows securely integrated with **Supabase Auth**.
+*   **Dynamic Checkout Flow:** Full order tracking lifecycle, from filtering the menu (by category and dietary preferences like Vegan) to dynamic cart calculations (subtotals, discounts) and generating persistent Order History records.
+*   **Robust Routing:** Seamless logical flow leveraging Angular Router for deep-linking, preventing hard reloads to preserve delicate user session states.
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🛠️ Technology Stack
 
-```bash
-ng generate --help
-```
+**Frontend Architecture:**
+*   **Framework:** Angular (19)
+*   **Reactivity:** Angular Signals (`signal`, `computed`, `effect`)
+*   **Styling:** SCSS + Bootstrap (Grid system & baseline utilities only, heavily customized)
+*   **Architecture:** Feature-based modular structure (Core Services, Shared Components, Features)
 
-## Building
+**Backend Integration:**
+*   **Platform:** Supabase (BaaS)
+*   **Database:** PostgreSQL (Products, Orders, Order Items relational schema)
+*   **Authentication:** Supabase GoTrue Auth API
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 🔮 Future Roadmap
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Development on Crumbs & Beans is actively evolving. The immediate next phase of implementation involves expanding the platform's managerial capabilities:
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+*   **🔒 Secure Admin Panel:** An expansive back-office interface designed for store managers to update product availability, track active orders, and adjust pricing.
+*   **🛡️ Angular Router Guards:** Implementation of strong Role-Based Access Control (RBAC) via `CanActivate` Route Guards, ensuring the Admin Panel is strictly inaccessible to unauthorized customers.

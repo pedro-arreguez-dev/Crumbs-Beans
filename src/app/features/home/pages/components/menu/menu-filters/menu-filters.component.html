@@ -1,0 +1,48 @@
+<div class="filters-card">
+  <h3><i class="bi bi-book"></i>Menu Categories</h3>
+  <div class="container">
+    <button
+      class="btn col-12"
+      [class.active]="selectedCategory() === 'all'"
+      (click)="onSelectCategory('all')"
+    >
+      <i class="bi bi-grid"></i>
+      <span>All</span>
+    </button>
+    <button
+      class="btn col-12"
+      [class.active]="selectedCategory() === 'coffee-drinks'"
+      (click)="onSelectCategory('coffee-drinks')"
+    >
+      <i class="bi bi-cup-hot"></i>
+      <span>Coffee & Drinks</span>
+    </button>
+    <button
+      class="btn col-12"
+      [class.active]="selectedCategory() === 'bakery'"
+      (click)="onSelectCategory('bakery')"
+    >
+      <i class="bi bi-cake2"></i>
+      <span>Bakery</span>
+    </button>
+    <h4>Filters</h4>
+    <div [formGroup]="filtersForm" class="filters-form">
+      <div class="form-check mt-3">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          formControlName="vegan"
+          id="veganCheck"
+        />
+        <label for="veganCheck" class="form-check-label">Vegan</label>
+      </div>
+
+      <input
+        type="text"
+        class="form-control search-bar mt-3"
+        placeholder="Search..."
+        formControlName="search"
+      />
+    </div>
+  </div>
+</div>

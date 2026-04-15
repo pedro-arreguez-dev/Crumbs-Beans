@@ -1,0 +1,113 @@
+.app-footer {
+  background-color: var(--color-primary);
+  color: var(--color-light-brown);
+  margin-top: 4rem;
+
+  .footer-brand {
+    font-family: 'Leckerli One', cursive;
+    font-size: 2.2rem;
+    color: var(--color-tertiary);
+    margin-bottom: 1rem;
+  }
+
+  .brand-tagline {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.2rem;
+    i {
+      font-size: 1.4rem;
+      color: var(--color-light-brown);
+      cursor: pointer;
+      transition: color 0.3s ease;
+      &:hover {
+        color: var(--color-tertiary);
+      }
+    }
+  }
+
+  .locations-section {
+    h4 {
+      color: var(--color-tertiary);
+      font-family: 'Playfair Display', serif;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  .location-card {
+    .location-inner {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.2rem;
+      height: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        border-color: var(--color-tertiary);
+      }
+    }
+
+    .location-icon {
+      display: inline-block;
+      color: var(--color-primary);
+      background-color: var(--color-tertiary);
+      padding: 0.4rem;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .city {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .address {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1rem;
+      min-height: 45px;
+    }
+
+    .contact-info {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+      p {
+        margin-bottom: 0.3rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        
+        i {
+          color: var(--color-tertiary);
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    p {
+      font-size: 0.9rem;
+      opacity: 0.6;
+      margin: 0;
+    }
+  }
+}

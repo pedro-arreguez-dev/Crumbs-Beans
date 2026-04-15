@@ -1,0 +1,37 @@
+<footer class="app-footer">
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-12 col-md-4 brand-section">
+        <h3 class="footer-brand">Crumbs & Beans</h3>
+        <p class="brand-tagline">Crafting the perfect sensory experience, one cup at a time.</p>
+        <div class="social-links">
+          <i class="bi bi-instagram"></i>
+          <i class="bi bi-twitter-x"></i>
+          <i class="bi bi-facebook"></i>
+          <i class="bi bi-yelp"></i>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 locations-section">
+        <h4 class="mb-4">Our Locations</h4>
+        <div class="row g-4">
+          @for (loc of locations; track loc.city) {
+            <div class="col-12 col-sm-6 col-lg-4 location-card">
+              <div class="location-inner">
+                <i class="bi bi-geo-alt-fill location-icon"></i>
+                <h5 class="city">{{ loc.city }}</h5>
+                <p class="address">{{ loc.address }}</p>
+                <div class="contact-info">
+                  <p><i class="bi bi-telephone-fill"></i> {{ loc.phone }}</p>
+                  <p><i class="bi bi-clock-fill"></i> {{ loc.hours }}</p>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {{ currentYear }} Crumbs & Beans Coffee. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

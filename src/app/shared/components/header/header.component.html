@@ -1,0 +1,53 @@
+<nav class="navbar">
+  <div class="container-fluid">
+    <button class="mobile-toggle" (click)="toggleMobileMenu()">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <a class="navbar-brand" href="#">
+      <img src="logo.png" alt="logo" class="img-fluid" />
+      <span class="brand-name">Crumbs & Beans</span>
+    </a>
+
+    <div class="nav-links" [class.mobile-open]="isMobileMenuOpen()">
+      <button class="mobile-close" (click)="toggleMobileMenu()">
+        <i class="bi bi-x"></i>
+      </button>
+      <a href="#" (click)="closeMobileMenu()"> Home </a>
+      <a href="#menu" (click)="closeMobileMenu()"> Menu </a>
+      <a routerLink="/orders" (click)="closeMobileMenu()"> Orders </a>
+      <a href="" (click)="closeMobileMenu()"> Locations </a>
+    </div>
+
+    <div class="last-icons">
+      <!-- Unauthenticated -->
+      <a routerLink="/auth/login" *ngIf="!user">
+        <i class="bi bi-person-fill icon"></i>
+      </a>
+
+      <!-- Authenticated -->
+      <div class="user-menu-wrapper" *ngIf="user">
+        <a href="#" (click)="toggleUserMenu($event)">
+          <i class="bi bi-person-check-fill icon" style="color: var(--color-primary)"></i>
+        </a>
+        <div class="user-dropdown" *ngIf="isUserMenuOpen()">
+           <div class="dropdown-item user-email">{{ user.email }}</div>
+           <hr />
+           <button class="dropdown-item logout-btn" (click)="logout()">
+             <i class="bi bi-box-arrow-right"></i> Logout
+           </button>
+        </div>
+      </div>
+      <a href="#" (click)="toggleCart($event)">
+        <i class="bi bi-cart-fill icon-cart"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-backdrop" *ngIf="isMobileMenuOpen()" (click)="toggleMobileMenu()"></div>
+</nav>
+
+<div class="cart-wrapper" *ngIf="isCartOpen()">
+  <div class="cart-backdrop" (click)="toggleCart($event)"></div>
+  <app-cart class="cart-overlay"></app-cart>
+</div>

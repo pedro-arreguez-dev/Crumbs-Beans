@@ -1,0 +1,19 @@
+.container-custom {
+    padding: 0;
+    margin: 0;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    color: var(--color-secondary);
+    font-style: bold;
+    font-size: 4rem;
+    margin-left: 10px;
+}
+
+.content {
+    background-color: var(--color-secondary);
+    flex: 1;
+}

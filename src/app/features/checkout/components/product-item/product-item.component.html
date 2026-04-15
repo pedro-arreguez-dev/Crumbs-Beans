@@ -1,0 +1,29 @@
+<div class="product">
+  <img class="image" [src]="product.img_path" [alt]="product.name" />
+  <div class="product-info">
+    <div class="title-row">
+      <h4>{{ product.name }}</h4>
+      <div class="price-container">
+        <span class="unit-price">{{ product.price | currency: "USD" }} / unit</span>
+        <h5 class="total-price">{{ product.price * product.quantity | currency: "USD" }}</h5>
+      </div>
+    </div>
+    
+    <div class="actions-row">
+      <div class="quantity-controls">
+        <button class="qty-btn" (click)="updateQuantity(product.quantity - 1)">
+          <i class="bi bi-dash"></i>
+        </button>
+        <span class="qty-display">{{ product.quantity }}</span>
+        <button class="qty-btn" (click)="updateQuantity(product.quantity + 1)">
+          <i class="bi bi-plus"></i>
+        </button>
+      </div>
+
+      <button class="remove-btn" (click)="removeItem()">
+        <i class="bi bi-trash-fill"></i>
+        <span>Remove</span>
+      </button>
+    </div>
+  </div>
+</div>

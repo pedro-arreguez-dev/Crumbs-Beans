@@ -1,0 +1,16 @@
+.brown-section {
+    background-color: var(--color-primary);
+    height: 30px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.btn {
+    background-color: var(--color-tertiary);
+    color: var(--color-secondary);
+
+    :focus {
+        background-color: var(--color-secondary);
+        color: var(--color-primary);
+    }
+}

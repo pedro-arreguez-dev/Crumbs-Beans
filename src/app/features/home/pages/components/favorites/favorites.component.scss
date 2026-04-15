@@ -1,0 +1,74 @@
+.favorite-section {
+  background-color: var(--color-primary);
+  overflow-x: hidden;
+}
+
+.favorite-info {
+  background-color: var(--color-primary);
+}
+
+.cursive-title {
+  font-family:
+    "Leckerli One",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 4.5rem;
+  color: white;
+}
+
+.favorite-text {
+  color: var(--color-light-brown);
+  font-family:
+    "Playfair Display",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 3rem;
+}
+
+.container-fluid {
+  padding-left: 20px;
+}
+
+.brownies-images {
+  img {
+    border-radius: 20px;
+  }
+}
+
+.overlay {
+  background-color: var(--color-primary);
+  opacity: 0.7;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-2 {
+  width: 100%;
+  height: 100%;
+}
+
+.sells-text {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+
+  &.sells-count {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+}
+
+.white-circle {
+  background-color: white;
+  border-radius: 100%;
+  right: 0px;
+  transform: translateX(20%);
+}
+
+.coffee-and-brownies {
+  border-radius: 20px;
+}

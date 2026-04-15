@@ -1,0 +1,54 @@
+<div class="brown-section"></div>
+<div id="menu" class="container-fluid menu-section mt-5">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <span class="d-inline span-highlight">Our Menu</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="d-flex justify-content-center mb-5">
+      <h2>Crafted with passion</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-3 mb-4 d-flex justify-content-center">
+      <app-menu-filters
+        [selectedCategory]="selectedCategory"
+        [filters]="filters"
+      ></app-menu-filters>
+    </div>
+    <div class="col-12 col-md-9 d-flex justify-content-center flex-wrap gap-4">
+      @for (product of visibleProducts(); track product.id) {
+        <div class="mb-3">
+          <app-product-card
+            [product]="product"
+            (addToCart)="onAddToCart($event)"
+          ></app-product-card>
+        </div>
+      }
+      @if (visibleCount() < filteredProducts().length) {
+        <button (click)="loadMore()" class="btn mb-3">
+          See more
+        </button>
+      }
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast-container position-fixed bottom-0 end-0 p-4" style="z-index: 1055;">
+  <div class="toast align-items-center text-white border-0 shadow-lg" 
+       style="background-color: var(--color-secondary);"
+       [class.show]="showToast()" 
+       role="alert" 
+       aria-live="assertive" 
+       aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body fs-6 d-flex align-items-center gap-2">
+        <i class="bi bi-check2-circle fs-5" style="color: var(--color-tertiary);"></i>
+        <span><strong>{{ toastProductName() }}</strong> was added to your cart!</span>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-3 m-auto" (click)="showToast.set(false)" aria-label="Close"></button>
+    </div>
+  </div>
+</div>

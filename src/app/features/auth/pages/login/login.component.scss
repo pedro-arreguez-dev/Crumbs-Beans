@@ -1,0 +1,14 @@
+.login-page {
+  background-image: url("/coffee-background.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100dvh;
+}
+
+.login-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 100dvh;
+}

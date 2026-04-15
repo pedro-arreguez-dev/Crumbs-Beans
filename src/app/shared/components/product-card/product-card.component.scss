@@ -1,0 +1,79 @@
+.custom-card {
+    border-radius: 20px;
+    outline: 1px solid rgb(183, 183, 183);
+    width: 20rem;
+    height: 26rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        img {
+            transform: scale(1.10);
+            transition: transform 0.3s ease-in-out;
+        }
+    }
+    
+    .img-container {
+        overflow: hidden;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    img {
+        width: 16rem;
+        height: 16rem;
+        object-fit: cover;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: var(--color-tertiary);
+        color: var(--color-secondary);
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        padding: 5px;
+    }
+    
+    h3 {
+        color: var(--color-primary);
+        font-family: 'Lato', sans-serif;
+        font-weight: 600;
+    }
+
+    p {
+        color: var(--color-secondary);
+        font-family: 'Lato', sans-serif;
+    }
+
+    .price-div {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 10px;
+        margin-top: auto;
+
+        .price {
+            text-align: center;
+            align-items: center;
+        }
+
+        button {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            text-align: center;
+            background-color: var(--color-tertiary);
+            color: var(--color-secondary);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    }
+}

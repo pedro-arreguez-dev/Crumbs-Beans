@@ -1,0 +1,22 @@
+<div class="custom-card pb-2">
+  <div class="img-container">
+    <img [src]="product.img_path" alt="{{ product.name }}" class="img-fluid w-100" />
+    @if (product.vegan) {
+    <span class="badge"><i class="bi bi-leaf"></i><span>Vegan</span></span>
+    }
+  </div>
+  <div class="ms-2">
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.description }}</p>
+  </div>
+  <div class="price-div">
+    <h4 class="price">
+      ${{ product.price }}
+    </h4>
+
+    <button type="button" (click)="add($event)">
+      <i class="bi bi-cart"></i>
+      <span>Add to Cart</span>
+    </button>
+  </div>
+</div>
