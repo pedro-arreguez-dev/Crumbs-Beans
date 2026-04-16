@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { AuthFormComponent } from "../../components/auth-form/auth-form.component";
 import { AuthService } from '@app/core/services/auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [AuthFormComponent],
+  imports: [AuthFormComponent, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -25,7 +25,7 @@ export class LoginComponent {
 
       this.router.navigate(['/']);
     } catch {
-      this.error.set('Credenciales inválidas');
+      this.error.set('Invalid credentials');
     }
   }
 

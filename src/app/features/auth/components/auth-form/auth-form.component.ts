@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   FormControl,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-auth-form',
@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 })
 export class AuthFormComponent {
   @Input() mode: 'login' | 'register' = 'login';
+  @Input() errorMessage: string | null = null;
   @Output() submitLogin = new EventEmitter<{
     email: string;
     password: string;

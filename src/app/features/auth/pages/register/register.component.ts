@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { AuthService } from '@app/core/services/auth/auth.service';
 import { AuthFormComponent } from '@app/features/auth/components/auth-form/auth-form.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  imports: [AuthFormComponent],
+  imports: [AuthFormComponent, RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })

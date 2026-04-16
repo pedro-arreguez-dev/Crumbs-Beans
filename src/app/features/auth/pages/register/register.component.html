@@ -1,5 +1,8 @@
-<div class="container-fluid login-page">
-  <div class="row">
+<div class="container-fluid login-page position-relative">
+  <a routerLink="/" class="back-btn">
+    <i class="bi bi-arrow-left me-2"></i> Go back
+  </a>
+  <div class="row m-0">
     <div class="col-12 col-md-10 login-container">
       <app-auth-form (submitLogin)="handleRegister($event)" [mode]="'register'"></app-auth-form>
     </div>

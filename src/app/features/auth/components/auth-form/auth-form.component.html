@@ -2,54 +2,59 @@
   <div class="green-bar"></div>
 
   <div class="form-container">
-    <div class="row mb-3">
-      <div class="col text-center">
-        <img src="/logo.png" alt="logo" class="img-fluid logo" />
-        <h4 class="title">{{ mode === "login" ? "Sign In" : "Register" }}</h4>
-      </div>
+    <div class="text-center mb-4">
+      <img src="/logo.png" alt="logo" class="logo" />
+      <h4 class="title">{{ mode === "login" ? "Welcome Back" : "Create Account" }}</h4>
+      <p class="text-muted small">Please enter your details to continue</p>
     </div>
+    
+    @if (errorMessage) {
+      <div class="alert alert-danger text-center p-2 mb-3 shadow-sm pt-2 pb-2">
+        <i class="bi bi-exclamation-circle me-2"></i>{{ errorMessage }}
+      </div>
+    }
+
     <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="login-form">
       <div class="mb-3">
-        <label class="form-label">Mail</label>
-        <input
-          type="email"
-          class="form-control"
-          formControlName="email"
-          placeholder="mail@example.com"
-        />
+        <label class="form-label">Email Address</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope text-muted"></i></span>
+          <input
+            type="email"
+            class="form-control border-start-0 ps-0"
+            formControlName="email"
+            placeholder="mail@example.com"
+          />
+        </div>
         @if (authForm.get("email")?.touched && authForm.get("email")?.invalid) {
-          <small
-            class="text-danger"
-          >
-            Invalid mail
-          </small>
+          <small class="text-danger mt-1 d-block">Valid mail is required</small>
         }
       </div>
 
-      <div class="mb-3">
+      <div class="mb-4">
         <label class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          formControlName="password"
-        />
-        @if (
-          authForm.get("password")?.touched && authForm.get("password")?.invalid
-        ) {
-          <small class="text-danger">6 characters minimum</small>
+        <div class="input-group">
+          <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock text-muted"></i></span>
+          <input
+            type="password"
+            class="form-control border-start-0 ps-0"
+            formControlName="password"
+            placeholder="••••••••"
+          />
+        </div>
+        @if (authForm.get("password")?.touched && authForm.get("password")?.invalid) {
+          <small class="text-danger mt-1 d-block">6 characters minimum</small>
         }
       </div>
 
-      <button class="btn w-100" type="submit">
-        {{ mode === "login" ? "Sign In" : "Register" }}
+      <button class="btn btn-primary-custom w-100 flex-grow-1" type="submit">
+        {{ mode === "login" ? "Sign In" : "Register Account" }}
       </button>
 
-      <span class="separator"></span>
+      <div class="separator mt-4 mb-4"></div>
       
-      <button class="change-mode" (click)="toggleMode()">
-        {{
-          mode === "login" ? "Create an account" : "Already have an account?"
-        }}
+      <button class="change-mode" type="button" (click)="toggleMode()">
+        {{ mode === "login" ? "Don't have an account? Sign up" : "Already have an account? Sign in" }}
       </button>
     </form>
   </div>
