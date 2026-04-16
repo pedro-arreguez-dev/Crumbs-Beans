@@ -1,0 +1,13 @@
+[build]
+  # We run our custom script to inject env variables before the standard ng build
+  command = "npm run build:netlify"
+  
+  # For Angular 17+ and 19 application builders, static output goes to the browser directory
+  publish = "dist/coffee-app/browser"
+
+# Setup redirect rules for Single Page Applications (SPA)
+# This makes sure Angular handles the client-side routing instead of Netlify throwing a 404
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
