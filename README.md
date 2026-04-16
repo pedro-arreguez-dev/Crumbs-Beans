@@ -2,6 +2,9 @@
 
 > A beautifully crafted, full-stack E-Commerce web application built to deliver a seamless and visually stunning coffee ordering experience.
 
+## Live Demo
+https://crumbs-beans.netlify.app/
+
 ## 🚀 Project Overview
 
 **Crumbs & Beans** is a modern Single Page Application (SPA) showcasing best-in-class frontend architecture and serverless backend integration. Engineered with the latest **Angular 19** features such as Standalone Components, built-in Control Flow, and reactive Signals, the application acts as a fast, robust, and highly scalable e-commerce platform.
