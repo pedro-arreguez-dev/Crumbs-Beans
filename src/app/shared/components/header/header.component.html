@@ -31,15 +31,18 @@
           <i class="bi bi-person-check-fill icon" style="color: var(--color-primary)"></i>
         </a>
         <div class="user-dropdown" *ngIf="isUserMenuOpen()">
-           <div class="dropdown-item user-email">{{ user.email }}</div>
-           <hr />
-           <button class="dropdown-item logout-btn" (click)="logout()">
-             <i class="bi bi-box-arrow-right"></i> Logout
-           </button>
+          <div class="dropdown-item user-email">{{ user.email }}</div>
+          <hr />
+          <button class="dropdown-item logout-btn" (click)="logout()">
+            <i class="bi bi-box-arrow-right"></i> Logout
+          </button>
         </div>
       </div>
-      <a href="#" (click)="toggleCart($event)">
+      <a href="#" (click)="toggleCart($event)" class="cart-btn">
         <i class="bi bi-cart-fill icon-cart"></i>
+        <span class="cart-badge" *ngIf="cartItemsCount() > 0">
+          {{ cartItemsCount() > 9 ? '9+' : cartItemsCount() }}
+        </span>
       </a>
     </div>
   </div>
