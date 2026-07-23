@@ -43,31 +43,116 @@
 
 
 :root {
-    --color-primary: #4a3728;
-    --color-secondary: #2d5016;
-    --color-tertiary: #c1f1a1;
-    --color-cream: #faf8f5;
-    --color-light-brown: #fff8f5;
+  /* --- COLOR PALETTE --- */
+  --color-primary: #4a3728;
+  --color-secondary: #2d5016;
+  --color-tertiary: #c1f1a1;
+  --color-cream: #faf8f5;
+  --color-light-brown: #fff8f5;
+
+  /* --- TYPOGRAPHY SCALE (Senior-designed Responsive Scale) --- */
+  /* 1. Proportional Line Heights (Fixed across breakpoints) */
+  --lh-none: 1;
+  --lh-tight: 1.15;
+  /* For large display headings */
+  --lh-heading: 1.25;
+  /* For standard section headings */
+  --lh-base: 1.5;
+  /* For standard body copy */
+  --lh-relaxed: 1.65;
+  /* For long-form text readability */
+
+  /* 2. Default Scale (Mobile-first, optimized for small screens <768px) */
+  --fs-xs: 0.75rem;
+  /* 12px | Captions, auxiliary text */
+  --fs-sm: 0.8125rem;
+  /* 13px | Badges, small buttons, labels */
+  --fs-base: 0.9375rem;
+  /* 15px | Body text, standard inputs */
+  --fs-md: 1.0625rem;
+  /* 17px | Slogans, leading paragraph text */
+  --fs-lg: 1.1875rem;
+  /* 19px | Small headings, card titles, subheadings */
+  --fs-xl: 1.35rem;
+  /* 21.6px | Section subheadings */
+  --fs-2xl: 1.625rem;
+  /* 26px | Section headings, primary card title */
+  --fs-3xl: 2rem;
+  /* 32px | Secondary headings */
+  --fs-4xl: 2.5rem;
+  /* 40px | Main display titles, large headers */
+  --fs-5xl: 3.25rem;
+  /* 52px | Hero display titles */
+}
+
+/* 3. Tablet Scale (min-width: 768px - Bootstrap MD breakpoint) */
+@media (min-width: 768px) {
+  :root {
+    --fs-sm: 0.875rem;
+    /* 14px */
+    --fs-base: 1rem;
+    /* 16px */
+    --fs-md: 1.125rem;
+    /* 18px */
+    --fs-lg: 1.25rem;
+    /* 20px */
+    --fs-xl: 1.5rem;
+    /* 24px */
+    --fs-2xl: 1.875rem;
+    /* 30px */
+    --fs-3xl: 2.375rem;
+    /* 38px */
+    --fs-4xl: 3rem;
+    /* 48px */
+    --fs-5xl: 4.25rem;
+    /* 68px */
+  }
+}
+
+/* 4. Desktop Scale (min-width: 1200px - Bootstrap XL breakpoint) */
+@media (min-width: 1200px) {
+  :root {
+    --fs-2xl: 2rem;
+    /* 32px */
+    --fs-3xl: 2.75rem;
+    /* 44px */
+    --fs-4xl: 3.5rem;
+    /* 56px */
+    --fs-5xl: 5rem;
+    /* 80px */
+  }
 }
 
 body {
   font-family: 'Lato', system-ui, -apple-system, sans-serif;
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
   overflow-x: clip;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--lh-heading);
+}
+
 h1 {
-    color: var(--color-primary);
+  color: var(--color-primary);
+  font-size: var(--fs-4xl);
 }
 
 h2 {
-    color: var(--color-primary);
-    font-size: 4rem;
+  color: var(--color-primary);
+  font-size: var(--fs-3xl);
 }
 
 .span-highlight {
-    background-color: var(--color-tertiary);
-    color: var(--color-secondary);
-    border-radius: 20px;
-    padding: 10px 10px;
-    display: inline-block;
+  background-color: var(--color-tertiary);
+  color: var(--color-secondary);
+  border-radius: 20px;
+  padding: 10px 10px;
+  display: inline-block;
 }
