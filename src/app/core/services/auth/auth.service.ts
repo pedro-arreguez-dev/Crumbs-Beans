@@ -59,8 +59,28 @@ export class AuthService {
   }
 
   async waitForInit() {
-  while (!this.initialized) {
-    await new Promise(res => setTimeout(res, 50));
+    while (!this.initialized) {
+      await new Promise(res => setTimeout(res, 20));
+    }
   }
-}
+
+  async isAdmin(): Promise<boolean> {
+    const user = this.user();
+
+    if (!user) {
+      return false;
+    }
+
+    const { data: profile, error } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+
+    if (error || !profile) {
+      return false;
+    }
+
+    return profile.role === 'admin';
+  }
 }

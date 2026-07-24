@@ -1,5 +1,5 @@
 .login-page {
-  background-image: url("/coffee-background.jpeg");
+  background-image: url("/coffee-background.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -7,10 +7,10 @@
 }
 
 .login-container {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    height: 100dvh;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 100dvh;
 }
 
 .back-btn {
@@ -27,21 +27,21 @@
   font-size: 1rem;
   font-weight: 600;
   border: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease;
   z-index: 10;
-  
+
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
     color: #fff;
     filter: brightness(1.1);
   }
-  
+
   &:active {
     transform: translateY(0);
   }
-  
+
   i {
     font-size: 1.2rem;
     transition: transform 0.2s ease;
@@ -56,6 +56,7 @@
   .login-container {
     justify-content: center;
   }
+
   .back-btn {
     top: 1.5rem;
     left: 1.5rem;

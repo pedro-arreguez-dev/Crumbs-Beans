@@ -1,0 +1,184 @@
+<div class="dashboard-container container-fluid pb-5">
+  <div class="header-section text-center py-5">
+    <h1 class="gradient-title">Store Management</h1>
+    <p class="subtitle">Real-time orders control center and business insights</p>
+  </div>
+
+  <div class="content container">
+    <!-- Stats Row -->
+    <div class="row g-4 mb-5">
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon-wrapper orders">
+            <i class="bi bi-receipt"></i>
+          </div>
+          <div class="stat-data">
+            <span class="stat-value">{{ totalOrders() }}</span>
+            <span class="stat-label">Total Orders</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon-wrapper pending">
+            <i class="bi bi-clock-history"></i>
+          </div>
+          <div class="stat-data">
+            <span class="stat-value">{{ pendingOrders() }}</span>
+            <span class="stat-label">Pending</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon-wrapper completed">
+            <i class="bi bi-check2-circle"></i>
+          </div>
+          <div class="stat-data">
+            <span class="stat-value">{{ completedOrders() }}</span>
+            <span class="stat-label">Completed</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon-wrapper revenue">
+            <i class="bi bi-cash-stack"></i>
+          </div>
+          <div class="stat-data">
+            <span class="stat-value">{{ totalRevenue() | currency:'USD' }}</span>
+            <span class="stat-label">Total Revenue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters and Search -->
+    <div class="filter-search-container p-4 mb-4">
+      <div class="row g-3 align-items-center">
+        <!-- Search bar -->
+        <div class="col-12 col-md-5">
+          <div class="search-input-wrapper">
+            <i class="bi bi-search search-icon"></i>
+            <input 
+              type="text" 
+              class="form-control search-input" 
+              placeholder="Search by Order # or Customer ID..."
+              [value]="searchQuery()"
+              (input)="searchQuery.set($any($event.target).value)"
+            >
+          </div>
+        </div>
+        <!-- Status Tabs / Buttons -->
+        <div class="col-12 col-md-7">
+          <div class="filter-tabs d-flex flex-wrap gap-2 justify-content-md-end">
+            @for (opt of ['All', 'Pending', 'Preparing', 'Ready', 'Completed', 'Cancelled']; track opt) {
+              <button 
+                type="button" 
+                class="filter-tab-btn" 
+                [class.active]="statusFilter() === opt"
+                (click)="statusFilter.set(opt)"
+              >
+                {{ opt }}
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Orders List -->
+    @if (loading()) {
+      <div class="loading-state d-flex justify-content-center py-5">
+        <div class="spinner-border glow-spinner" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    } @else if (filteredOrders().length === 0) {
+      <div class="empty-state text-center py-5">
+        <i class="bi bi-inboxes display-2 mb-3 empty-icon"></i>
+        <h3>No matching orders found</h3>
+        <p class="text-muted">Try adjusting your filters or search query.</p>
+      </div>
+    } @else {
+      <div class="orders-list">
+        @for (order of filteredOrders(); track order.id) {
+          <div 
+            class="order-card" 
+            [class.expanded]="isExpanded(order.id)" 
+            (click)="toggleOrder(order.id)"
+          >
+            <!-- Card Header -->
+            <div class="order-header d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+              <div class="order-main-info">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="order-id">Order #{{ formatOrderId(order.id) }}</span>
+                  <span class="badge" [ngClass]="getStatusClass(order.status)">{{ order.status }}</span>
+                </div>
+                <div class="d-flex flex-wrap gap-3 mt-2 text-muted-custom">
+                  <span class="info-text">
+                    <i class="bi bi-calendar3 me-1"></i>
+                    {{ order.created_at | date:'mediumDate' }} {{ order.created_at | date:'shortTime' }}
+                  </span>
+                  <span class="info-text">
+                    <i class="bi bi-person me-1"></i>
+                    Customer ID: <code class="user-id-code">{{ order.user_id }}</code>
+                  </span>
+                </div>
+              </div>
+
+              <div class="order-actions d-flex align-items-center gap-3" (click)="$event.stopPropagation()">
+                <!-- Price tag -->
+                <span class="order-total me-2">{{ order.total | currency:'USD' }}</span>
+
+                <!-- Status Select Picker -->
+                <div class="status-select-wrapper">
+                  <select 
+                    class="form-select status-select" 
+                    [value]="order.status"
+                    [ngClass]="getStatusClass(order.status)"
+                    (change)="updateStatus(order.id, $any($event.target).value)"
+                  >
+                    <option value="Pending">Pending</option>
+                    <option value="Preparing">Preparing</option>
+                    <option value="Ready">Ready</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>
+                  </select>
+                </div>
+
+                <!-- Expand Chevron -->
+                <div class="expand-icon-wrapper" (click)="toggleOrder(order.id); $event.stopPropagation()">
+                  <i class="bi" [class.bi-chevron-up]="isExpanded(order.id)" [class.bi-chevron-down]="!isExpanded(order.id)"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Expanded Content (Order Items) -->
+            <div class="order-items-section" [class.show]="isExpanded(order.id)">
+              <hr class="divider">
+              <h5 class="items-title mb-3">Order Details ({{ order.order_items.length }} items)</h5>
+              
+              <div class="row g-3">
+                @for (item of order.order_items; track item.id) {
+                  <div class="col-12 col-md-6">
+                    <div class="item-card d-flex justify-content-between align-items-center p-3">
+                      <div class="item-details d-flex align-items-center gap-3">
+                        <div class="qty-badge">{{ item.quantity }}x</div>
+                        <div class="d-flex flex-column">
+                          <span class="item-name">{{ item.name }}</span>
+                          <span class="item-unit-price text-muted-custom">{{ item.price | currency:'USD' }} each</span>
+                        </div>
+                      </div>
+                      <span class="item-total-price">{{ item.price * item.quantity | currency:'USD' }}</span>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>
